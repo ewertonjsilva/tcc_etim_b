@@ -51,7 +51,7 @@ router.get('/pedidos', PedidosController.listarPedidos);
 // excluir
 
 
-router.get('/pedidos', ProdutosController.listarProdutos); 
+router.get('/produtos', ProdutosController.listarProdutos); 
 // cadastrar
 // editar
 // excluir
