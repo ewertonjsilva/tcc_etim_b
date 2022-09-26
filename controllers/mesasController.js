@@ -34,7 +34,7 @@ module.exports = {
     }, 
     async update(request, response) { 
         try {
-                // parâmtros passados via corpo da requisição
+                // parâmetros passados via corpo da requisição
             const { mes_nome, mes_status, mes_lugares, ped_id } = request.body;
                 // parâmetro passado via url na chamada da api pelo front-end
             const { mes_id } = request.params; 
@@ -50,5 +50,21 @@ module.exports = {
             return response.status(500).json({confirma: 'Erro', message: error});
         }        
     }, 
+    async delete(request, response) { 
+        try {
+                // parâmetro passado via url na chamada da api pelo front-end
+            const { mes_id } = request.params;    
+                // comando de exclusão
+            const sql = 'DELETE FROM mesas WHERE mes_id = ?'; 
+                // definição de array com os parâmetros que receberam os valores do front-end
+            const values = [mes_id];
+                // executa a instrução de exclusão no banco de dados    
+            await db.query(sql, values);  
+                // Mensagem de retorno no formato JSON
+            return response.status(200).json({confirma: 'Sucesso', message:'Mesa com id ' + mes_id + ' excluída com sucesso'}); 
+        } catch (error) {
+            return response.status(500).json({confirma: 'Erro', message: error});
+        }        
+    },
 };
 
