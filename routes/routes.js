@@ -62,8 +62,9 @@ router.get('/produtostipo', ProdutosTipoController.listarProdutosTipo);
 // editar
 // excluir
 
-
+ 
 router.get('/usuarios', UsuariosController.listarUsuarios); 
+router.get('/usuarios/login', UsuariosController.login); 
 // cadastrar
 // editar
 // excluir
